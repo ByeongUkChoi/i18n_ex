@@ -3,16 +3,7 @@ defmodule I18nEx do
   Documentation for `I18nEx`.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> I18nEx.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def current_locale() do
+    Application.get_env(:i18n_ex, :locale, "en-US")
   end
 end
