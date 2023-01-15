@@ -17,6 +17,23 @@ defmodule I18nEx.Number do
       "1 000"
 
   """
+
+  defstruct locale: "en-US", data: nil
+
   def format(number, opts \\ []) do
+    %__MODULE__{}
+    |> struct(opts)
+    |> struct(data: number)
+  end
+end
+
+defimpl String.Chars, for: I18nEx.Number do
+  def to_string(%{data: number, locale: _}) do
+    number
+    |> Integer.to_charlist()
+    |> Enum.reverse()
+    |> Enum.chunk_every(3)
+
+    # TODO: add delimiter, to string, variable count
   end
 end
