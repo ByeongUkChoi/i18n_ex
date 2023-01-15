@@ -18,22 +18,23 @@ defmodule I18nEx.Number do
 
   """
 
-  defstruct locale: "en-US", data: nil
+  defstruct data: nil, locale: "en-US", delimiter: ","
 
   def format(number, opts \\ []) do
     %__MODULE__{}
     |> struct(opts)
     |> struct(data: number)
+    |> to_string()
   end
 end
 
 defimpl String.Chars, for: I18nEx.Number do
-  def to_string(%{data: number, locale: _}) do
+  def to_string(%{data: number, locale: _, delimiter: delimiter}) do
     number
     |> Integer.to_charlist()
     |> Enum.reverse()
     |> Enum.chunk_every(3)
-
-    # TODO: add delimiter, to string, variable count
+    |> Enum.join(delimiter)
+    |> String.reverse()
   end
 end
