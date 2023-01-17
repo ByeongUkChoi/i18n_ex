@@ -3,6 +3,8 @@ defmodule I18nEx.Number do
   A module for formatting numbers.
   """
 
+  defstruct data: nil, locale: I18nEx.current_locale(), delimiter: ","
+
   @doc """
   Formats the given number using the provided options.
   Locale will be passed within the opts paramter as locale: key.
@@ -10,21 +12,18 @@ defmodule I18nEx.Number do
 
   ## Examples
 
-      iex> I18nEx.Number.format(1000)
+      iex> I18nEx.Number.format(1000) |> to_string()
       "1,000"
 
-      iex> I18nEx.Number.format(1000, [locale: "fr-FR"])
+      iex> I18nEx.Number.format(1000, [locale: "fr-FR"]) |> to_string()
       "1 000"
 
   """
-
-  defstruct data: nil, locale: "en-US", delimiter: ","
 
   def format(number, opts \\ []) do
     %__MODULE__{}
     |> struct(opts)
     |> struct(data: number)
-    |> to_string()
   end
 end
 
