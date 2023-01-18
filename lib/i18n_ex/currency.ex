@@ -28,7 +28,7 @@ defmodule I18nEx.Currency do
 end
 
 defimpl String.Chars, for: I18nEx.Currency do
-  def to_string(%{data: number, locale: _} = currency) do
+  def to_string(%{data: number} = currency) do
     number
     |> Integer.to_charlist()
     |> Enum.reverse()

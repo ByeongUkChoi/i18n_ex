@@ -15,7 +15,7 @@ defmodule I18nEx.Number do
       iex> I18nEx.Number.format(1000) |> to_string()
       "1,000"
 
-      iex> I18nEx.Number.format(1000, [locale: "fr-FR"]) |> to_string()
+      iex> I18nEx.Number.format(1000, locale: "fr-FR") |> to_string()
       "1 000"
 
   """

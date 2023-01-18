@@ -22,35 +22,35 @@ Here are some examples of how to use the library:
 
 ```elixir
 # Formatting numbers
-I18nEx.Number.format(1000, locale: "en-US")
+I18nEx.Number.format(1000, locale: "en-US") |> to_string()
 # => "1,000"
 
 # Formatting a number with a specific number of decimal places
-I18nEx.Number.format(3.14159265359, locale: "en-US", minimum_fraction_digits: 2, maximum_fraction_digits: 4)
+I18nEx.Number.format(3.14159265359, locale: "en-US", minimum_fraction_digits: 2, maximum_fraction_digits: 4) |> to_string()
 # => "3.1416"
 
 # Formatting a percentage
-I18nEx.Number.format(0.25, locale: "en-US", style: "percent")
+I18nEx.Number.format(0.25, locale: "en-US", style: "percent") |> to_string()
 # => "25%"
 
 # Formatting currencies
-I18nEx.Currency.format(1000, currency: "USD", locale: "en-US")
+I18nEx.Currency.format(1000, currency: "USD", locale: "en-US") |> to_string()
 # => "$1,000.00"
 
 # Formatting a currency for a specific country
-I18nEx.Currency.format(1000, currency: "USD", locale: "fr-FR")
+I18nEx.Currency.format(1000, currency: "USD", locale: "fr-FR") |> to_string()
 # => "1 000,00 $US"
 
 # Formatting a currency with a custom currency symbol
-I18nEx.Currency.format(1000, currency: "USD", locale: "en-US", currency_display: "symbol", currency_sign: "€")
+I18nEx.Currency.format(1000, currency: "USD", locale: "en-US", currency_display: "symbol", currency_sign: "€") |> to_string()
 # => "€1,000.00"
 
 # Formatting dates
-I18nEx.DateTime.format(~D[2022-01-01], locale: "en-US", format: "MMM d, yyyy")
+I18nEx.DateTime.format(~D[2022-01-01], locale: "en-US", format: "MMM d, yyyy") |> to_string()
 # => "Jan 1, 2022"
 
 # Formatting a date and time with a specific time zone
-I18nEx.DateTime.format(~N[2022-01-01T12:34:56.789Z], locale: "en-US", format: "MMM d, yyyy h:mm a z", time_zone: "America/New_York")
+I18nEx.DateTime.format(~N[2022-01-01T12:34:56.789Z], locale: "en-US", format: "MMM d, yyyy h:mm a z", time_zone: "America/New_York") |> to_string()
 # => "Jan 1, 2022 7:34 AM EST"
 ```
 
