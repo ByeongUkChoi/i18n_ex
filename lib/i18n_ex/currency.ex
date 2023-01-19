@@ -3,7 +3,7 @@ defmodule I18nEx.Currency do
   A module for formatting currencies.
   """
 
-  defstruct data: nil, locale: I18nEx.current_locale(), delimiter: ","
+  defstruct data: nil, locale: I18nEx.current_locale(), currency: "USD", delimiter: ","
 
   @doc """
   Formats the given number as a currency using the provided options.
@@ -38,7 +38,19 @@ defimpl String.Chars, for: I18nEx.Currency do
     |> display(currency)
   end
 
-  defp display(string, %{locale: "en-US"}) do
-    "$" <> string
+  defp display(string, %{currency: "USD"}) do
+    "US$" <> string
+  end
+
+  defp display(string, %{currency: "KRW"}) do
+    "₩" <> string
+  end
+
+  defp display(string, %{currency: "JPY"}) do
+    "JP¥" <> string
+  end
+
+  defp display(string, %{currency: "CNY"}) do
+    "CN¥" <> string
   end
 end
