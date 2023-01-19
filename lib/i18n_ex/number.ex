@@ -3,7 +3,7 @@ defmodule I18nEx.Number do
   A module for formatting numbers.
   """
 
-  defstruct data: nil, locale: I18nEx.current_locale(), delimiter: ","
+  defstruct data: nil, locale: I18nEx.current_locale(), delimiter: nil
 
   @doc """
   Formats the given number using the provided options.
@@ -28,12 +28,22 @@ defmodule I18nEx.Number do
 end
 
 defimpl String.Chars, for: I18nEx.Number do
-  def to_string(%{data: number, locale: _, delimiter: delimiter}) do
+  def to_string(%{data: number, locale: _} = struct) do
+    delimiter = get_delimiter(struct)
+
     number
     |> Integer.to_charlist()
     |> Enum.reverse()
     |> Enum.chunk_every(3)
     |> Enum.join(delimiter)
     |> String.reverse()
+  end
+
+  defp get_delimiter(%{locale: "fr-FR", delimiter: nil}) do
+    " "
+  end
+
+  defp get_delimiter(_) do
+    ","
   end
 end
