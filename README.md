@@ -11,7 +11,7 @@ by adding `i18n_ex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:i18n_ex, "~> 0.1.0"}
+    {:i18n_ex, "~> 0.0.1"}
   ]
 end
 ```
