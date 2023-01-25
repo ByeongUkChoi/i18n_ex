@@ -12,7 +12,8 @@ defmodule I18nEx.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
-      description: "Easy-to-use and localized formatting library for numbers, currencies and dates"
+      description:
+        "Easy-to-use and localized formatting library for numbers, currencies and dates"
     ]
   end
 
@@ -36,6 +37,5 @@ defmodule I18nEx.MixProject do
       licenses: ["MIT"],
       links: %{"GitHub" => @source_url}
     ]
-
   end
 end

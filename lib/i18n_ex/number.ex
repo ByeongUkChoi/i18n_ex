@@ -39,11 +39,6 @@ defimpl String.Chars, for: I18nEx.Number do
     |> String.reverse()
   end
 
-  defp get_delimiter(%{locale: "fr-FR", delimiter: nil}) do
-    " "
-  end
-
-  defp get_delimiter(_) do
-    ","
-  end
+  defp get_delimiter(%{locale: "fr-FR", delimiter: nil}), do: " "
+  defp get_delimiter(_), do: ","
 end
